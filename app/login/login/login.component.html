@@ -1,0 +1,105 @@
+<section class="login-container">
+    <mat-card class="login-mat-card" *ngIf="loginViewType == 'login'; else signup">
+        <section class="login-header">
+            <h1>Login</h1>
+        </section>
+        <mat-card-content >
+            <form [formGroup]="loginFormGroup" class="login-form-group">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="username" type="email" placeholder="Enter a valid email">
+                    <mat-error *ngIf="username.hasError('email') && !username.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="username.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" placeholder="Enter your password">
+                    <mat-error *ngIf="password.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="login(loginFormGroup.value)"
+                    [disabled]="loginFormGroup.invalid">
+                    Submit
+                </button>
+                <p>Need an account, please <a href="#" (click)="loginViewType = 'signup'">click here</a> to signup</p>
+            </form>
+        </mat-card-content>
+    </mat-card>
+    <ng-template #signup>
+        <mat-card class="login-mat-card">
+            <section class="login-header">
+                <h1>Signup</h1>
+            </section>
+            <mat-card-content>
+                <form [formGroup]="signupFormGroup" novalidate class="signup-form-group">
+                    <section class="signup-row">
+                        <mat-form-field>
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="firstname" type="text" placeholder="Enter your first name">
+                            <mat-error *ngIf="firstname.hasError('required')">
+                                First name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lastname" type="text" placeholder="Enter your last name">
+                            <mat-error *ngIf="lastname.hasError('required')">
+                                Last name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </section>
+                    <section class="signup-row">
+                        <mat-form-field>
+                            <mat-label>User Name</mat-label>
+                            <input matInput formControlName="tusername" type="text" placeholder="Enter user name">
+                            <mat-error *ngIf="tusername.hasError('required')">
+                                User name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="spassword" type="password" placeholder="Enter your password">
+                            <mat-error *ngIf="spassword.hasError('required')">
+                                Password is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </section>
+                    <section class="signup-row">
+                        <mat-form-field>
+                            <mat-label>Gender</mat-label>
+                            <mat-select formControlName="gender" type="password" placeholder="Select your gender">
+                                <mat-option value="Male">Male</mat-option>
+                                <mat-option value="Female">Female</mat-option>
+                                <mat-option value="Other">Other</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="gender.hasError('required')">
+                                Gender is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Age</mat-label>
+                            <input matInput formControlName="age" type="number" placeholder="Enter your age">
+                            <mat-error *ngIf="age.hasError('required')">
+                                Age is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </section>
+                    <section class="signup-row">
+                        <button mat-raised-button color="primary" (click)="signUp(signupFormGroup.value)"
+                            [disabled]="signupFormGroup.invalid">
+                            Signup
+                        </button>
+                        <button mat-raised-button color="warning" (click)="loginViewType = 'login'">
+                            Back
+                        </button>
+                    </section>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </ng-template>
+</section>

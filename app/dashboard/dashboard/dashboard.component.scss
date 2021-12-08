@@ -1,0 +1,52 @@
+.dashboard {
+    .sel-link {
+        opacity: 0.5;
+        font-weight: bold;
+    }
+    header {
+        padding: 10px;
+        text-align: center;
+        background: lightblue;
+        a {
+            text-decoration: none;
+            padding: 10px;
+            margin: 30px;
+            font-size: 20px;
+        }
+    }
+    .table-section {
+        width: 60vw;
+        margin: 10px auto;
+        .card {
+            min-height: 60vh;
+            box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+        }
+        .first-therapy {
+            width: 20vw;
+            margin: auto;
+            .tfg {
+                display: flex;
+                flex-direction: column;
+                grid-gap: 20px;
+            }
+        }
+        .action {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            .add-new {
+                justify-self: flex-end;
+            }
+        }
+        table {
+            width: 100%;
+        }
+        .no-records {
+            min-height: 30vh;
+            width: 25vw;
+            margin: auto;
+            h3 {
+                line-height: 30vh;
+            }
+        }
+    }
+}
